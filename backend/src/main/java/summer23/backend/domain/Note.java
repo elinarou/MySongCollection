@@ -16,6 +16,8 @@ public class Note {
 
     private String note;
 
+    private String version;
+
     @ManyToOne
     @JoinColumn(name="song_id")
     private Song song;
@@ -32,8 +34,9 @@ public class Note {
         super();
     }
 
-    public Note(String note, Song song, Instrument instrument, Type type) {
+    public Note(String note, String version, Song song, Instrument instrument, Type type) {
         this.note = note;
+        this.version = version;
         this.song = song;
         this.instrument = instrument;
         this.type = type;
@@ -53,6 +56,14 @@ public class Note {
 
     public void setNote(String note) {
         this.note = note;
+    }
+
+    public String getVersion() {
+        return version;
+    }
+
+    public void setVersion(String version) {
+        this.version = version;
     }
 
     public Song getSong() {
@@ -81,7 +92,7 @@ public class Note {
 
     @Override
     public String toString() {
-        return "Note [note_id=" + note_id + ", note=" + note + "]";
+        return "Note [note_id=" + note_id + ", note=" + note + ", version=" + version +"]";
     } 
 
 }
