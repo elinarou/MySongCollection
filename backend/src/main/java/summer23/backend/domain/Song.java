@@ -20,6 +20,8 @@ public class Song {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long song_id;
 
+    private String song;
+
     @ManyToOne
     @JoinColumn(name="artist_id")
     private Artist artist;
@@ -36,7 +38,8 @@ public class Song {
         super();
     }
 
-    public Song(Artist artist, Genre genre) {
+    public Song(String song, Artist artist, Genre genre) {
+        this.song = song;
         this.artist = artist;
         this.genre = genre;
     }
@@ -47,6 +50,14 @@ public class Song {
 
     public void setSong_id(Long song_id) {
         this.song_id = song_id;
+    }
+
+    public String getSong() {
+        return song;
+    }
+
+    public void setSong(String song) {
+        this.song = song;
     }
 
     public Artist getArtist() {
@@ -75,7 +86,7 @@ public class Song {
 
     @Override
     public String toString() {
-        return "Song [song_id=" + song_id + "]";
-    }
+        return "Song [song_id=" + song_id + ", song=" + song + "]";
+    } 
 
 }

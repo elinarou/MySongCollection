@@ -1,5 +1,11 @@
 package summer23.backend.domain;
 
-public interface InstrumentRepository {
-    
+import java.util.List;
+
+import org.springframework.data.repository.CrudRepository;
+
+public interface InstrumentRepository extends CrudRepository<Instrument, Long> {
+
+	List<Genre> findByInstrument(String instrument);
+
 }
