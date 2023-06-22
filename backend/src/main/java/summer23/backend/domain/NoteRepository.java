@@ -5,13 +5,13 @@ import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 
 public interface NoteRepository extends CrudRepository<Note, Long> {
-	// find by song
+	// Find by song
 	List<Note> findBySongSong(String song);
 
-    // find by type
+    // Find by type
 	List<Note> findByTypeType(String type);
 	
-	// find by instrument
+	// Find by instrument
 	List<Note> findByInstrumentInstrument(String instrument);
 
 }
