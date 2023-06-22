@@ -29,16 +29,23 @@ public class NoteController {
 	@Autowired
 	private TypeRepository typeRepository;
 	
-	// Show notelist
-	@RequestMapping(value= {"/notelist"})
-	public String notelist(Model model) {
+	// Show all sheet music
+	@RequestMapping(value= {"/sheetmusiclist"})
+	public String listSheetMusic(Model model) {
 		model.addAttribute("notes", noteRepository.findAll());
-		return "notelist";
+		return "sheetmusiclist";
 	}
+
+    // Show song's sheet music
+    @GetMapping("/songsheetmusic/{id}")
+    public String listSongSheetMusic(@PathVariable("song_id") Long songid, Model model) {
+        model.addAttribute("notes", noteRepository.findBySongSong_id(songid));
+        return "songsheetmusic";
+    }
 	
-	// Add new note
+	// Add new sheet music
 	@RequestMapping(value = "/addnote")
-	public String addSong(Model model){
+	public String addNote(Model model){
 		model.addAttribute("note", new Note());
         model.addAttribute("songs", songRepository.findAll());
 		model.addAttribute("types", typeRepository.findAll());
@@ -46,21 +53,21 @@ public class NoteController {
 		return "addnote";
 	}
 	
-	// Save new note
-	@PostMapping("/save")
-	public String save(Note note){
+	// Save new sheet music
+	@PostMapping("/savenote")
+	public String saveNote(Note note){
 		noteRepository.save(note);
-		return "redirect:notelist";
+		return "redirect:sheetmusiclist";
 	}
 	
-	// Delete note
-	@GetMapping("/delete/{id}")
-	public String deleteSong(@PathVariable("note_id") Long noteid, Model model){ 
+	// Delete sheet music
+	@GetMapping("/deletenote/{id}")
+	public String deleteNote(@PathVariable("note_id") Long noteid, Model model){ 
 		noteRepository.deleteById(noteid);
-		return "redirect:../notelist";
+		return "redirect:../sheetmusiclist";
 	}
 	
-	// Edit note
+	// Edit sheet music
 	@GetMapping("/editnote/{id}")
 	public String editNote(Note song, @PathVariable("note_id") Long noteid, Model model){ 
 		model.addAttribute("note", noteRepository.findById(noteid));

@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 
 public interface NoteRepository extends CrudRepository<Note, Long> {
-	// Find by song
-	List<Note> findBySongSong(String song);
+	// Find by song id
+	List<Note> findBySongSong_id(Long song_id);
 
     // Find by type
 	List<Note> findByTypeType(String type);

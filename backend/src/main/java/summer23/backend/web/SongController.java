@@ -26,7 +26,7 @@ public class SongController {
 	private GenreRepository genreRepository;
 	
 	// Show songlist
-	@RequestMapping(value= {"/songlist"})
+	@RequestMapping(value= {"/", "/songlist"})
 	public String songlist(Model model) {
 		model.addAttribute("songs", songRepository.findAll());
 		return "index";
@@ -42,14 +42,14 @@ public class SongController {
 	}
 	
 	// Save new song
-	@PostMapping("/save")
-	public String save(Song song){
+	@PostMapping("/savesong")
+	public String saveSong(Song song){
 		songRepository.save(song);
 		return "redirect:songlist";
 	}
 	
 	// Delete song
-	@GetMapping("/delete/{id}")
+	@GetMapping("/deletesong/{id}")
 	public String deleteSong(@PathVariable("song_id") Long songId, Model model){ 
 		songRepository.deleteById(songId);
 		return "redirect:../songlist";
