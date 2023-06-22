@@ -65,6 +65,14 @@ public class Song {
         this.genre = genre;
     }
 
+    public List<Note> getNotes() {
+		return notes;
+	}
+
+	public void setNotes(List<Note> notes) {
+		this.notes = notes;
+	}
+
     @Override
     public String toString() {
         return "Song [song_id=" + song_id + "]";

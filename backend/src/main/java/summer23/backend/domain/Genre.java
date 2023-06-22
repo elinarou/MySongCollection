@@ -1,9 +1,15 @@
 package summer23.backend.domain;
 
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class Genre {
@@ -12,6 +18,10 @@ public class Genre {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long genre_id;
     private String genre;
+
+    @JsonIgnore
+	@OneToMany(cascade = CascadeType.ALL, mappedBy ="genre")
+	private List<Song> songs;
 
     public Genre() {
         super();
@@ -36,6 +46,14 @@ public class Genre {
     public void setGenre(String genre) {
         this.genre = genre;
     }
+
+    public List<Song> getSongs() {
+		return songs;
+	}
+
+	public void setSongs(List<Song> songs) {
+		this.songs = songs;
+	}
 
     @Override
     public String toString() {

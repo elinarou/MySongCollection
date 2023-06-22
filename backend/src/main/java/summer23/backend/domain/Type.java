@@ -1,9 +1,15 @@
 package summer23.backend.domain;
 
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class Type {
@@ -12,6 +18,10 @@ public class Type {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long type_id;
     private String type;
+
+    @JsonIgnore
+	@OneToMany(cascade = CascadeType.ALL, mappedBy ="type")
+	private List<Note> notes;
 
     public Type() {
         super();
@@ -36,6 +46,14 @@ public class Type {
     public void setType(String type) {
         this.type = type;
     }
+
+    public List<Note> getNotes() {
+		return notes;
+	}
+
+	public void setNotes(List<Note> notes) {
+		this.notes = notes;
+	}
 
     @Override
     public String toString() {
