@@ -27,10 +27,17 @@ public class SongController {
 	
 	// Show songlist
 	@RequestMapping(value= {"/songlist"})
-	public String songlist(Model model) {
+	public String listSongs(Model model) {
 		model.addAttribute("songs", songRepository.findAll());
 		return "songlist";
 	}
+
+	// Show artist id's songs
+    @GetMapping("/artistsonglist/{id}")
+    public String listArtistSonglist(@PathVariable("id") Long artistId, Model model) {
+        model.addAttribute("songs", songRepository.findByArtistId(artistId));
+        return "artistsonglist";
+    }
 	
 	// Add new song
 	@RequestMapping(value = "/addsong")
