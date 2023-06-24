@@ -29,7 +29,7 @@ public class SongController {
 	@RequestMapping(value= {"/", "/songlist"})
 	public String songlist(Model model) {
 		model.addAttribute("songs", songRepository.findAll());
-		return "index";
+		return "songlist";
 	}
 	
 	// Add new song
@@ -50,14 +50,14 @@ public class SongController {
 	
 	// Delete song
 	@GetMapping("/deletesong/{id}")
-	public String deleteSong(@PathVariable("song_id") Long songId, Model model){ 
+	public String deleteSong(@PathVariable("id") Long songId, Model model){ 
 		songRepository.deleteById(songId);
 		return "redirect:../songlist";
 	}
 	
 	// Edit song
 	@GetMapping("/editsong/{id}")
-	public String editSong(Song song, @PathVariable("song_id") Long songId, Model model){ 
+	public String editSong(Song song, @PathVariable("id") Long songId, Model model){ 
 		model.addAttribute("song", songRepository.findById(songId));
 		model.addAttribute("artists", artistRepository.findAll());
 		model.addAttribute("genres", genreRepository.findAll());

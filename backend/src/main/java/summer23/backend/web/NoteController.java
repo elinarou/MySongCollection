@@ -36,10 +36,10 @@ public class NoteController {
 		return "sheetmusiclist";
 	}
 
-    // Show song's sheet music
+    // Show song id's sheet music
     @GetMapping("/songsheetmusic/{id}")
-    public String listSongSheetMusic(@PathVariable("song_id") Long songid, Model model) {
-        model.addAttribute("notes", noteRepository.findBySongSong_id(songid));
+    public String listSongSheetMusic(@PathVariable("id") Long songId, Model model) {
+        model.addAttribute("notes", noteRepository.findBySongId(songId));
         return "songsheetmusic";
     }
 	
@@ -62,15 +62,15 @@ public class NoteController {
 	
 	// Delete sheet music
 	@GetMapping("/deletenote/{id}")
-	public String deleteNote(@PathVariable("note_id") Long noteid, Model model){ 
-		noteRepository.deleteById(noteid);
+	public String deleteNote(@PathVariable("id") Long noteId, Model model){ 
+		noteRepository.deleteById(noteId);
 		return "redirect:../sheetmusiclist";
 	}
 	
 	// Edit sheet music
 	@GetMapping("/editnote/{id}")
-	public String editNote(Note song, @PathVariable("note_id") Long noteid, Model model){ 
-		model.addAttribute("note", noteRepository.findById(noteid));
+	public String editNote(Note song, @PathVariable("id") Long noteId, Model model){ 
+		model.addAttribute("note", noteRepository.findById(noteId));
         model.addAttribute("songs", songRepository.findAll());
 		model.addAttribute("types", typeRepository.findAll());
 		model.addAttribute("instruments", instrumentRepository.findAll());
