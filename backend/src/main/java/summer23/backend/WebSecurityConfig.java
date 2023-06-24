@@ -39,7 +39,7 @@ public class WebSecurityConfig {
                 .headers(headers -> headers.frameOptions().disable())
                 .csrf(csrf -> csrf.ignoringRequestMatchers("/h2-console/**"))
                 // Successful login leads to songlist.html
-                .formLogin(login -> login.defaultSuccessUrl("/songlist", true))
+                .formLogin(login -> login.defaultSuccessUrl("/artistlist", true))
                 // Logout is permitted for all users
                 .logout(logout -> logout.permitAll())
                 // Building

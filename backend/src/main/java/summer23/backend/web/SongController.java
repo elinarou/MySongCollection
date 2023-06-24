@@ -26,7 +26,7 @@ public class SongController {
 	private GenreRepository genreRepository;
 	
 	// Show songlist
-	@RequestMapping(value= {"/", "/songlist"})
+	@RequestMapping(value= {"/songlist"})
 	public String songlist(Model model) {
 		model.addAttribute("songs", songRepository.findAll());
 		return "songlist";
