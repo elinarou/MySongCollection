@@ -9,9 +9,9 @@ public interface NoteRepository extends CrudRepository<Note, Long> {
 	List<Note> findBySongId(Long id);
 
     // Find by type name
-	List<Note> findByTypeType(String type);
+	List<Note> findByTypeName(String name);
 	
 	// Find by instrument name
-	List<Note> findByInstrumentInstrument(String instrument);
+	List<Note> findByInstrumentName(String name);
 
 }

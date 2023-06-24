@@ -32,7 +32,7 @@
 		</div>
 	</nav>
 	<div class="clearfix">
-		<a class="float-left ml-sm-2 mt-sm-3 btn btn-info" href="/addartist">Add Sheet Music</a>
+		<a class="float-left ml-sm-2 mt-sm-3 btn btn-info" href="/addnote">Add Sheet Music</a>
 		<form class="float-right m-sm-3" th:action="@{/logout}" method="post">
 			<input type="submit" value="Sign Out" class="btn btn-sm btn-light"/>
 		</form>
@@ -53,10 +53,10 @@
 			</thead>
 			<tbody>
 				<tr th:each="note:${notes}">
-					<td th:text="${note.song.song}"></td>
-					<td th:text="${note.song.artist.artist}"></td>
-					<td th:text="${note.instrument.instrument}"></td>
-					<td th:text="${note.type.type}"></td>
+					<td th:text="${note.song.name}"></td>
+					<td th:text="${note.song.artist.name}"></td>
+					<td th:text="${note.instrument.name}"></td>
+					<td th:text="${note.type.name}"></td>
 					<td th:text="${note.version}"></td>
 					<td>
 						<a th:href="@{/deletenote/{id}(id=${note.id})}" class="btn btn-outline-danger"

@@ -6,6 +6,6 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface InstrumentRepository extends CrudRepository<Instrument, Long> {
 	// Find by instrument name
-	List<Genre> findByInstrument(String instrument);
+	List<Genre> findByName(String name);
 
 }

@@ -17,7 +17,7 @@ public class Instrument {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String instrument;
+    private String name;
 
     @JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, mappedBy ="instrument")
@@ -27,8 +27,8 @@ public class Instrument {
         super();
     }
 
-    public Instrument(String instrument) {
-        this.instrument = instrument;
+    public Instrument(String name) {
+        this.name = name;
     }
 
     public Long getId() {
@@ -39,12 +39,12 @@ public class Instrument {
         this.id = id;
     }
 
-    public String getInstrument() {
-        return instrument;
+    public String getName() {
+        return name;
     }
 
-    public void setInstrument(String instrument) {
-        this.instrument = instrument;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public List<Note> getNotes() {
@@ -57,7 +57,7 @@ public class Instrument {
 
     @Override
     public String toString() {
-        return "Instrument [id=" + id + ", instrument=" + instrument + "]";
+        return "Instrument [id=" + id + ", name=" + name + "]";
     }
 
 }

@@ -8,11 +8,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import summer23.backend.domain.ArtistRepository;
 import summer23.backend.domain.InstrumentRepository;
 import summer23.backend.domain.Note;
 import summer23.backend.domain.NoteRepository;
 import summer23.backend.domain.SongRepository;
 import summer23.backend.domain.TypeRepository;
+import summer23.backend.domain.GenreRepository;
 
 @Controller
 public class NoteController {
@@ -28,6 +30,12 @@ public class NoteController {
 
 	@Autowired
 	private TypeRepository typeRepository;
+
+	@Autowired
+	private ArtistRepository artistRepository;
+
+	@Autowired
+	private GenreRepository genreRepository;
 	
 	// Show all sheet music
 	@RequestMapping(value= {"/sheetmusiclist"})
@@ -48,6 +56,8 @@ public class NoteController {
 	public String addNote(Model model){
 		model.addAttribute("note", new Note());
         model.addAttribute("songs", songRepository.findAll());
+		model.addAttribute("artists", artistRepository.findAll());
+		model.addAttribute("genres", genreRepository.findAll());
 		model.addAttribute("types", typeRepository.findAll());
 		model.addAttribute("instruments", instrumentRepository.findAll());
 		return "addnote";

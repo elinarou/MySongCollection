@@ -6,15 +6,15 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface SongRepository extends CrudRepository<Song, Long> {
 	// Find by song name
-	List<Song> findBySong(String song);
+	List<Song> findByName(String name);
 		
 	// Find by artist id
 	List<Song> findByArtistId(Long id);
 	
 	// Find by artist name
-	List<Song> findByArtistArtist(String artist);
+	List<Song> findByArtistName(String name);
 	
 	// Find by genre name
-	List<Song> findByGenreGenre(String genre);
+	List<Song> findByGenreName(String name);
 
 }

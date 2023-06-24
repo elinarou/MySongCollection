@@ -17,7 +17,7 @@ public class Genre {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String genre;
+    private String name;
 
     @JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, mappedBy ="genre")
@@ -27,8 +27,8 @@ public class Genre {
         super();
     }
 
-    public Genre(String genre) {
-        this.genre = genre;
+    public Genre(String name) {
+        this.name = name;
     }
 
     public Long getId() {
@@ -39,12 +39,12 @@ public class Genre {
         this.id = id;
     }
 
-    public String getGenre() {
-        return genre;
+    public String getName() {
+        return name;
     }
 
-    public void setGenre(String genre) {
-        this.genre = genre;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public List<Song> getSongs() {
@@ -57,7 +57,7 @@ public class Genre {
 
     @Override
     public String toString() {
-        return "Genre [id=" + id + ", genre=" + genre + "]";
+        return "Genre [id=" + id + ", name=" + name + "]";
     }
 
 }

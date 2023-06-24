@@ -17,7 +17,7 @@ public class Artist {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String artist;
+    private String name;
 
     @JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, mappedBy ="artist")
@@ -27,8 +27,8 @@ public class Artist {
         super();
     }
 
-    public Artist(String artist) {
-        this.artist = artist;
+    public Artist(String name) {
+        this.name = name;
     }
 
     public Long getId() {
@@ -39,12 +39,12 @@ public class Artist {
         this.id = id;
     }
 
-    public String getArtist() {
-        return artist;
+    public String getName() {
+        return name;
     }
 
-    public void setArtist(String artist) {
-        this.artist = artist;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public List<Song> getSongs() {
@@ -57,7 +57,7 @@ public class Artist {
 
     @Override
     public String toString() {
-        return "Artist [id=" + id + ", artist=" + artist + "]";
+        return "Artist [id=" + id + ", name=" + name + "]";
     }
 
 }

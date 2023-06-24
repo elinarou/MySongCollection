@@ -17,7 +17,7 @@ public class Type {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String type;
+    private String name;
 
     @JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, mappedBy ="type")
@@ -27,8 +27,8 @@ public class Type {
         super();
     }
 
-    public Type(String type) {
-        this.type = type;
+    public Type(String name) {
+        this.name = name;
     }
 
     public Long getId() {
@@ -39,12 +39,12 @@ public class Type {
         this.id = id;
     }
 
-    public String getType() {
-        return type;
+    public String getName() {
+        return name;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public List<Note> getNotes() {
@@ -57,7 +57,7 @@ public class Type {
 
     @Override
     public String toString() {
-        return "Type [id=" + id + ", type=" + type + "]";
+        return "Type [id=" + id + ", name=" + name + "]";
     }
 
 }

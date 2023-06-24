@@ -6,6 +6,6 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface TypeRepository extends CrudRepository<Type, Long> {
 	// Find by Type name
-	List<Type> findByType(String type);
+	List<Type> findByName(String name);
 
 }

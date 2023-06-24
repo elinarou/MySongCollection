@@ -13,7 +13,7 @@ public class Note {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String note;
+    private String sheetmusic;
 
     private String version;
 
@@ -30,8 +30,8 @@ public class Note {
         super();
     }
 
-    public Note(String note, String version, Song song, Instrument instrument, Type type) {
-        this.note = note;
+    public Note(String sheetmusic, String version, Song song, Instrument instrument, Type type) {
+        this.sheetmusic = sheetmusic;
         this.version = version;
         this.song = song;
         this.instrument = instrument;
@@ -46,12 +46,12 @@ public class Note {
         this.id = id;
     }
 
-    public String getNote() {
-        return note;
+    public String getSheetmusic() {
+        return sheetmusic;
     }
 
-    public void setNote(String note) {
-        this.note = note;
+    public void setSheetmusic(String sheetmusic) {
+        this.sheetmusic = sheetmusic;
     }
 
     public String getVersion() {
@@ -88,7 +88,7 @@ public class Note {
 
     @Override
     public String toString() {
-        return "Note [id=" + id + ", note=" + note + ", version=" + version +"]";
+        return "Note [id=" + id + ", sheetmusic=" + sheetmusic + ", version=" + version +"]";
     } 
 
 }
