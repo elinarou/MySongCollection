@@ -83,19 +83,29 @@ public class BackendApplication {
 			Song song1 = new Song("Black Sheep", artist1, genre1);
 			Song song2 = new Song("House Of Gold", artist2, genre2);
 			Song song3 = new Song("Ravistettava Ennen Käyttöä", artist3, genre3);
+			Song song4 = new Song("Jumala", artist3, genre3);
+			Song song5 = new Song("Broken", artist1, genre1);
 			songRepository.save(song1);
 			songRepository.save(song2);
 			songRepository.save(song3);
+			songRepository.save(song4);
+			songRepository.save(song5);
 
 			log.info("Sheet Music");
 			Note note1 = new Note("", "Version 1", song1, instru1, type2);
 			Note note2 = new Note("", "Version 1", song2, instru3, type1);
 			Note note3 = new Note("", "Version 1", song3, instru1, type1);
 			Note note4 = new Note("", "Version 2", song1, instru3, type1);
+			Note note5 = new Note("", "Version 1", song4, instru1, type1);
+			Note note6 = new Note("", "Version 2", song4, instru1, type1);
+			Note note7 = new Note("", "Version 1", song5, instru3, type1);
 			noteRepository.save(note1);
 			noteRepository.save(note2);
 			noteRepository.save(note3);
 			noteRepository.save(note4);
+			noteRepository.save(note5);
+			noteRepository.save(note6);
+			noteRepository.save(note7);
 
 			log.info("Fetch all sheet music");
 			for (Note note : noteRepository.findAll()) {

@@ -1,13 +1,24 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
-<link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeLeaf-extras-springsecurity5">
 
 <head>
 	<title>MySongCollection</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
 </head>
 
 <body>
+    <div class="jumbotron bg-dark text-center">
+        <h1 class="display-4 text-white">My Song Collection</h1>
+    </div>
+    <div class="col-md-4">
+        <h3 th:inline="text">Welcome [[${#httpServletRequest.remoteUser}]]</h3>
+    </div>
+    <div class="col-md-4" style="padding-bottom:20px">
+        <form th:action="@{/logout}" method="post">
+            <input type="submit" value="Sign Out" class="btn btn-sm btn-light"/>
+        </form>
+    </div>
 	<div>
 		<table class="table table-striped">
 			<thead>
@@ -26,8 +37,9 @@
 				</tr>
 			</tbody>
 		</table>
-		<a href="/addartist" class="btn btn-success">Add Artist</a>
-        <a href="/songlist" class="btn btn-success">All Songs</a>
+        <div class="col-md-4">
+            <a class="btn btn-dark" href="/addartist">Add Artist</a>
+        </div>
 	</div>
 </body>
 
