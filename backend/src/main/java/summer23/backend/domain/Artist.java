@@ -16,7 +16,7 @@ public class Artist {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long artist_id;
+    private Long id;
     private String artist;
 
     @JsonIgnore
@@ -32,11 +32,11 @@ public class Artist {
     }
 
     public Long getArtist_id() {
-        return artist_id;
+        return id;
     }
 
-    public void setArtist_id(Long artist_id) {
-        this.artist_id = artist_id;
+    public void setArtist_id(Long id) {
+        this.id = id;
     }
 
     public String getArtist() {
@@ -57,7 +57,7 @@ public class Artist {
 
     @Override
     public String toString() {
-        return "Artist [artist_id=" + artist_id + ", artist=" + artist + "]";
+        return "Artist [id=" + id + ", artist=" + artist + "]";
     }
 
 }
