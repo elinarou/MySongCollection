@@ -6,12 +6,12 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface NoteRepository extends CrudRepository<Note, Long> {
 	// Find by song id
-	List<Note> findBySongSong_id(Long song_id);
+	List<Note> findBySongId(Long id);
 
-    // Find by type
+    // Find by type name
 	List<Note> findByTypeType(String type);
 	
-	// Find by instrument
+	// Find by instrument name
 	List<Note> findByInstrumentInstrument(String instrument);
 
 }

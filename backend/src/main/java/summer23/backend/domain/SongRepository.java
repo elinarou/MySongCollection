@@ -8,10 +8,10 @@ public interface SongRepository extends CrudRepository<Song, Long> {
 	// Find by song name
 	List<Song> findBySong(String song);
 	
-	// Find by artist
+	// Find by artist name
 	List<Song> findByArtistArtist(String artist);
 	
-	// Find by genre
+	// Find by genre name
 	List<Song> findByGenreGenre(String genre);
 
 }
