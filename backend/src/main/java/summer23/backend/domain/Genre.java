@@ -16,7 +16,7 @@ public class Genre {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long genre_id;
+    private Long id;
     private String genre;
 
     @JsonIgnore
@@ -31,12 +31,12 @@ public class Genre {
         this.genre = genre;
     }
 
-    public Long getGenre_id() {
-        return genre_id;
+    public Long getId() {
+        return id;
     }
 
-    public void setGenre_id(Long genre_id) {
-        this.genre_id = genre_id;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getGenre() {
@@ -57,7 +57,7 @@ public class Genre {
 
     @Override
     public String toString() {
-        return "Genre [genre_id=" + genre_id + ", genre=" + genre + "]";
+        return "Genre [id=" + id + ", genre=" + genre + "]";
     }
 
 }

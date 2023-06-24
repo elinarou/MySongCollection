@@ -31,11 +31,11 @@ public class Artist {
         this.artist = artist;
     }
 
-    public Long getArtist_id() {
+    public Long getId() {
         return id;
     }
 
-    public void setArtist_id(Long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

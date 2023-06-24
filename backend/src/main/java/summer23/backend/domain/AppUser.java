@@ -10,7 +10,7 @@ public class AppUser {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long user_id;
+    private Long id;
 
     private String firstname;
     private String lastname;
@@ -30,12 +30,12 @@ public class AppUser {
         this.passwordhash = passwordhash;
     }
 
-    public Long getUser_id() {
-        return user_id;
+    public Long getId() {
+        return id;
     }
 
-    public void setUser_id(Long user_id) {
-        this.user_id = user_id;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getFirstname() {
@@ -80,7 +80,7 @@ public class AppUser {
 
     @Override
     public String toString() {
-        return "AppUser [user_id=" + user_id + ", firstname=" + firstname + ", lastname=" + lastname + ", rolestatus="
+        return "AppUser [id=" + id + ", firstname=" + firstname + ", lastname=" + lastname + ", rolestatus="
                 + rolestatus + ", username=" + username + ", passwordhash=" + passwordhash + "]";
     }    
     

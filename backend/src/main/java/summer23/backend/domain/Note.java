@@ -4,7 +4,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 
 @Entity
@@ -12,22 +11,19 @@ public class Note {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long note_id;
+    private Long id;
 
     private String note;
 
     private String version;
 
     @ManyToOne
-    @JoinColumn(name="song_id")
     private Song song;
 
     @ManyToOne
-    @JoinColumn(name="instrument_id")
     private Instrument instrument;
     
     @ManyToOne
-    @JoinColumn(name="type_id")
     private Type type;
 
     public Note() {
@@ -42,12 +38,12 @@ public class Note {
         this.type = type;
     }
 
-    public Long getNote_id() {
-        return note_id;
+    public Long getId() {
+        return id;
     }
 
-    public void setNote_id(Long note_id) {
-        this.note_id = note_id;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getNote() {
@@ -92,7 +88,7 @@ public class Note {
 
     @Override
     public String toString() {
-        return "Note [note_id=" + note_id + ", note=" + note + ", version=" + version +"]";
+        return "Note [id=" + id + ", note=" + note + ", version=" + version +"]";
     } 
 
 }

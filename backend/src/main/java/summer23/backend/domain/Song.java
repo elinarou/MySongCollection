@@ -9,7 +9,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 
@@ -18,16 +17,14 @@ public class Song {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long song_id;
+    private Long id;
 
     private String song;
 
     @ManyToOne
-    @JoinColumn(name="artist_id")
     private Artist artist;
     
     @ManyToOne
-    @JoinColumn(name="genre_id")
     private Genre genre;
 
     @JsonIgnore
@@ -44,12 +41,12 @@ public class Song {
         this.genre = genre;
     }
 
-    public Long getSong_id() {
-        return song_id;
+    public Long getId() {
+        return id;
     }
 
-    public void setSong_id(Long song_id) {
-        this.song_id = song_id;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getSong() {
@@ -86,7 +83,7 @@ public class Song {
 
     @Override
     public String toString() {
-        return "Song [song_id=" + song_id + ", song=" + song + "]";
+        return "Song [id=" + id + ", song=" + song + "]";
     } 
 
 }

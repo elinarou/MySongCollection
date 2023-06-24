@@ -16,7 +16,7 @@ public class Instrument {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long instrument_id;
+    private Long id;
     private String instrument;
 
     @JsonIgnore
@@ -31,12 +31,12 @@ public class Instrument {
         this.instrument = instrument;
     }
 
-    public Long getInstrument_id() {
-        return instrument_id;
+    public Long getId() {
+        return id;
     }
 
-    public void setInstrument_id(Long instrument_id) {
-        this.instrument_id = instrument_id;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getInstrument() {
@@ -57,7 +57,7 @@ public class Instrument {
 
     @Override
     public String toString() {
-        return "Instrument [instrument_id=" + instrument_id + ", instrument=" + instrument + "]";
+        return "Instrument [id=" + id + ", instrument=" + instrument + "]";
     }
 
 }

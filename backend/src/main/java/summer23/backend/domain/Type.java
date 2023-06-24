@@ -16,7 +16,7 @@ public class Type {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long type_id;
+    private Long id;
     private String type;
 
     @JsonIgnore
@@ -31,12 +31,12 @@ public class Type {
         this.type = type;
     }
 
-    public Long getType_id() {
-        return type_id;
+    public Long getId() {
+        return id;
     }
 
-    public void setType_id(Long type_id) {
-        this.type_id = type_id;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getType() {
@@ -57,7 +57,7 @@ public class Type {
 
     @Override
     public String toString() {
-        return "Type [type_id=" + type_id + ", type=" + type + "]";
+        return "Type [id=" + id + ", type=" + type + "]";
     }
 
 }
