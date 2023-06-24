@@ -12,8 +12,6 @@
 		<table class="table table-striped">
 			<thead>
 				<tr>
-					<th>Song</th>
-					<th>Artist</th>
 					<th>Instrument</th>
 					<th>Type</th>
 					<th>Version</th>
@@ -21,8 +19,6 @@
 			</thead>
 			<tbody>
 				<tr th:each="note:${notes}">
-					<td th:text="${note.song.song}"></td>
-					<td th:text="${note.song.artist.artist}"></td>
 					<td th:text="${note.instrument.instrument}"></td>
 					<td th:text="${note.type.type}"></td>
 					<td th:text="${note.version}"></td>
