@@ -91,9 +91,11 @@ public class BackendApplication {
 			Note note1 = new Note("", "Version 1", song1, instru1, type2);
 			Note note2 = new Note("", "Version 1", song2, instru3, type1);
 			Note note3 = new Note("", "Version 1", song3, instru1, type1);
+			Note note4 = new Note("", "Version 2", song1, instru3, type1);
 			noteRepository.save(note1);
 			noteRepository.save(note2);
 			noteRepository.save(note3);
+			noteRepository.save(note4);
 
 			log.info("Fetch all sheet music");
 			for (Note note : noteRepository.findAll()) {
