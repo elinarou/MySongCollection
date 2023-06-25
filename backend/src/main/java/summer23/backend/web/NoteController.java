@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import summer23.backend.domain.InstrumentRepository;
 import summer23.backend.domain.Note;
 import summer23.backend.domain.NoteRepository;
-import summer23.backend.domain.GenreRepository;
+import summer23.backend.domain.SongRepository;
 import summer23.backend.domain.TypeRepository;
 
 @Controller
@@ -21,7 +21,7 @@ public class NoteController {
 	private NoteRepository noteRepository;
 
     @Autowired
-	private GenreRepository genreRepository;
+	private SongRepository songRepository;
 	
 	@Autowired
 	private InstrumentRepository instrumentRepository;
@@ -47,7 +47,7 @@ public class NoteController {
 	@RequestMapping(value = "/addnote")
 	public String addNote(Model model){
 		model.addAttribute("note", new Note());
-        model.addAttribute("genres", genreRepository.findAll());
+        model.addAttribute("songs", songRepository.findAll());
 		model.addAttribute("types", typeRepository.findAll());
 		model.addAttribute("instruments", instrumentRepository.findAll());
 		return "addnote";
@@ -71,7 +71,7 @@ public class NoteController {
 	@GetMapping("/editnote/{id}")
 	public String editNote(Note song, @PathVariable("id") Long noteId, Model model){ 
 		model.addAttribute("note", noteRepository.findById(noteId));
-        model.addAttribute("genres", genreRepository.findAll());
+        model.addAttribute("songs", songRepository.findAll());
 		model.addAttribute("types", typeRepository.findAll());
 		model.addAttribute("instruments", instrumentRepository.findAll());
 		return "editnote";

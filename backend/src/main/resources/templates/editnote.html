@@ -1,0 +1,95 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>MySongCollection</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+</head>
+
+<body>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark p-sm-3">
+		<a class="navbar-brand" href="/">My Song Collection</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarText">
+		  	<ul class="navbar-nav mr-auto">
+				<li class="nav-item active">
+					<a class="nav-link" href="/artistlist">Artists <span class="sr-only">(current)</span></a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/songlist">Songs</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/sheetmusiclist">Sheet Music</a>
+				</li>
+		    </ul>
+		    <form class="form-inline">
+				<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+				<button class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
+		    </form>
+		</div>
+	</nav>
+	<div class="clearfix">
+		<form class="float-right m-sm-3" th:action="@{/logout}" method="post">
+			<input type="submit" value="Sign Out" class="btn btn-sm btn-light"/>
+		</form>
+	</div>
+	<div class="text-center">
+		<h1 class="mb-sm-5">Sheet Music</h1>
+		<form th:object="${note}" th:action="@{../savenote}" action="#" method="post">
+
+            <input type="hidden" id="id" th:field="*{id}" />
+
+			<div class="form-group">
+                <label for="songlist">Song</label>
+                <select id="songlist" th:field="*{song}">
+                    <option th:each="song: ${songs}" 
+                        th:value="${song.id}" 
+                        th:text="${song.name}">
+                    </option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="instrumentlist">Instrument</label>
+                <select id="instrumentlist" th:field="*{instrument}">
+                    <option th:each="instrument: ${instruments}" 
+                        th:value="${instrument.id}" 
+                        th:text="${instrument.name}">
+                    </option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="typelist">Type</label>
+                <select id="typelist" th:field="*{type}">
+                    <option th:each="type: ${types}" 
+                        th:value="${type.id}" 
+                        th:text="${type.name}">
+                    </option>
+                </select>
+            </div>
+
+            <div class="form-group">
+				<label for="version">Version</label>
+				<input type="text" th:field="*{version}" />
+				<div th:if="${#fields.hasErrors('version')}" th:errors="*{version}">Error</div>
+			</div>
+
+            <div class="form-group">
+				<label for="sheetmusic">Sheet Music</label>
+				<input type="text" th:field="*{sheetmusic}" />
+				<div th:if="${#fields.hasErrors('sheetmusic')}" th:errors="*{sheetmusic}">Error</div>
+			</div>
+
+			<div class="m-sm-3">
+				<a class="d-inline btn btn-outline-secondary" href="/sheetmusiclist">Back</a>
+				<input class="d-inline btn btn-info" type="submit" value="Save" />
+			</div>
+		</form>
+	</div>
+</body>
+
+</html>

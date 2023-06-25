@@ -40,24 +40,12 @@
 		<h1 class="mb-sm-5">Sheet Music</h1>
 		<form th:object="${note}" th:action="@{savenote}" action="#" method="post">
 
-            <div class="form-group">
-				<label for="song">Song</label>
-				<input type="text" th:field="*{song.name}" />
-				<div th:if="${#fields.hasErrors('song.name')}" th:errors="*{song.name}">Error</div>
-			</div>
-
-            <div class="form-group">
-				<label for="artist">Artist</label>
-				<input type="text" th:field="*{artist.name}" />
-				<div th:if="${#fields.hasErrors('artist.name')}" th:errors="*{artist.name}">Error</div>
-			</div>
-
-            <div class="form-group">
-                <label for="genrelist">Genre</label>
-                <select id="genrelist" th:field="*{genre}">
-                    <option th:each="genre: ${genres}" 
-                        th:value="${genre.id}" 
-                        th:text="${genre.name}">
+			<div class="form-group">
+                <label for="songlist">Song</label>
+                <select id="songlist" th:field="*{song}">
+                    <option th:each="song: ${songs}" 
+                        th:value="${song.id}" 
+                        th:text="${song.name}">
                     </option>
                 </select>
             </div>

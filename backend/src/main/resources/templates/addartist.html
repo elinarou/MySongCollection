@@ -37,13 +37,15 @@
 		</form>
 	</div>
 	<div class="text-center">
-		<h1 class="mb-sm-5">Artist</h1>
-		<form th:object="${artist}" th:action="@{saveartist}" action="#" method="post">
+		<h1 class="mb-sm-5">New Artist</h1>
+		<form th:object="${artist}" th:action="@{/saveartist}" action="#" method="post">
+
 			<div class="form-group">
 				<label for="name">Name</label>
 				<input type="text" th:field="*{name}" />
 				<div th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Error</div>
 			</div>
+
 			<div class="m-sm-3">
 				<a class="d-inline btn btn-outline-secondary" href="/artistlist">Back</a>
 				<input class="d-inline btn btn-info" type="submit" value="Save" />
