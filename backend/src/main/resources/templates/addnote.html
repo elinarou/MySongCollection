@@ -76,12 +76,6 @@
 				<div th:if="${#fields.hasErrors('version')}" th:errors="*{version}">Error</div>
 			</div>
 
-            <div class="form-group">
-				<label for="sheetmusic">Sheet Music</label>
-				<input type="text" th:field="*{sheetmusic}" />
-				<div th:if="${#fields.hasErrors('sheetmusic')}" th:errors="*{sheetmusic}">Error</div>
-			</div>
-
 			<div class="m-sm-3">
 				<a class="d-inline btn btn-outline-secondary" href="/sheetmusiclist">Back</a>
 				<input class="d-inline btn btn-info" type="submit" value="Save" />
