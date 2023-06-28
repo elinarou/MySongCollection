@@ -44,7 +44,6 @@
 					<th>Song</th>
 					<th>Instrument</th>
 					<th>Type</th>
-					<th>Version</th>
 					<th></th>
 					<th></th>
 					<th></th>
@@ -55,13 +54,12 @@
 					<td th:text="${note.song.name}"></td>
 					<td th:text="${note.instrument.name}"></td>
 					<td th:text="${note.type.name}"></td>
-					<td th:text="${note.version}"></td>
 					<td>
 						<a th:href="@{/deletenote/{id}(id=${note.id})}" class="btn btn-outline-danger"
 							th:onclick="if(!(confirm('Are you sure you want to delete this sheet music?'))) return false">Delete</a>
 					</td>
 					<td><a th:href="@{/editnote/{id}(id=${note.id})}" class="btn btn-outline-warning">Edit</a></td>
-                    <td><a th:href="@{/sheetmusic/{id}(id=${note.id})}" class="btn btn-info">Show</a></td>
+					<td><a th:href="${note.url}" th:target="_blank" class="btn btn-outline-info">Open</a></td>  
 				</tr>
 			</tbody>
 		</table>

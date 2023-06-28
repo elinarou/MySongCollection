@@ -21,8 +21,6 @@ import summer23.backend.domain.Song;
 import summer23.backend.domain.SongRepository;
 import summer23.backend.domain.Type;
 import summer23.backend.domain.TypeRepository;
-import summer23.backend.domain.FileModel;
-import summer23.backend.domain.FileModelRepository;
 
 @SpringBootApplication
 public class BackendApplication {
@@ -41,8 +39,7 @@ public class BackendApplication {
 		ArtistRepository artistRepository, 
 		InstrumentRepository instrumentRepository,
 		TypeRepository typeRepository,
-		AppUserRepository appUserRepository,
-		FileModelRepository fileModelRepository) {
+		AppUserRepository appUserRepository) {
 		return (args) -> {
 			
 			// Login profiles: user and admin
@@ -95,13 +92,13 @@ public class BackendApplication {
 			songRepository.save(song5);
 
 			log.info("Sheet Music");
-			Note note1 = new Note("Version 1", song1, instru1, type2, null);
-			Note note2 = new Note("Version 1", song2, instru3, type1, null);
-			Note note3 = new Note("Version 1", song3, instru1, type1, null);
-			Note note4 = new Note("Version 2", song1, instru3, type1, null);
-			Note note5 = new Note("Version 1", song4, instru1, type1, null);
-			Note note6 = new Note("Version 2", song4, instru1, type1, null);
-			Note note7 = new Note("Version 1", song5, instru3, type1, null);
+			Note note1 = new Note("https://www.google.com/", song1, instru1, type2);
+			Note note2 = new Note("https://www.google.com/", song2, instru3, type1);
+			Note note3 = new Note("https://www.google.com/", song3, instru1, type1);
+			Note note4 = new Note("https://www.google.com/", song1, instru3, type1);
+			Note note5 = new Note("https://www.google.com/", song4, instru1, type1);
+			Note note6 = new Note("https://www.google.com/", song4, instru1, type1);
+			Note note7 = new Note("https://www.google.com/", song5, instru3, type1);
 			noteRepository.save(note1);
 			noteRepository.save(note2);
 			noteRepository.save(note3);
@@ -109,14 +106,6 @@ public class BackendApplication {
 			noteRepository.save(note5);
 			noteRepository.save(note6);
 			noteRepository.save(note7);
-
-			log.info("Files");
-			FileModel fileModel1 = new FileModel("Testitiedosto1", "Testityypi1", note1, null); 
-			FileModel fileModel2 = new FileModel("Testitiedosto2", "Testityypi2", note2, null); 
-			FileModel fileModel3 = new FileModel("Testitiedosto3", "Testityypi3", note3, null); 
-			fileModelRepository.save(fileModel1);
-			fileModelRepository.save(fileModel2);
-			fileModelRepository.save(fileModel3);
 			
 			log.info("Fetch all sheet music");
 			for (Note note : noteRepository.findAll()) {

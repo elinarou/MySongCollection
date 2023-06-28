@@ -1,13 +1,10 @@
 package summer23.backend.domain;
 
-import java.util.List;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToOne;
 
 @Entity
 public class Note {
@@ -16,7 +13,7 @@ public class Note {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String version;
+    private String url;
 
     @ManyToOne
     private Song song;
@@ -27,19 +24,15 @@ public class Note {
     @ManyToOne
     private Type type;
 
-	@OneToOne
-	private FileModel fileModel;
-
     public Note() {
         super();
     }
 
-    public Note(String version, Song song, Instrument instrument, Type type, FileModel fileModel) {
-        this.version = version;
+    public Note(String url, Song song, Instrument instrument, Type type) {
+        this.url = url;
         this.song = song;
         this.instrument = instrument;
         this.type = type;
-        this.fileModel = fileModel;
     }
 
     public Long getId() {
@@ -50,12 +43,12 @@ public class Note {
         this.id = id;
     }
 
-    public String getVersion() {
-        return version;
+    public String getUrl() {
+        return url;
     }
 
-    public void setVersion(String version) {
-        this.version = version;
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     public Song getSong() {
@@ -82,17 +75,9 @@ public class Note {
         this.type = type;
     }
 
-    public FileModel getFileModel() {
-		return fileModel;
-	}
-
-	public void setFileModel(FileModel fileModel) {
-		this.fileModel = fileModel;
-	}
-
     @Override
     public String toString() {
-        return "Note [id=" + id + ", version=" + version +"]";
+        return "Note [id=" + id + ", url=" + url +"]";
     } 
 
 }

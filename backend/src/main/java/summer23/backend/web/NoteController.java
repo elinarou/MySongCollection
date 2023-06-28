@@ -57,7 +57,7 @@ public class NoteController {
 	@PostMapping("/savenote")
 	public String saveNote(Note note){
 		noteRepository.save(note);
-		return "upload";
+		return "redirect:sheetmusiclist";
 	}
 	
 	// Delete sheet music
