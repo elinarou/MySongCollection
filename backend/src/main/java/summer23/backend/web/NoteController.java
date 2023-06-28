@@ -57,7 +57,7 @@ public class NoteController {
 	@PostMapping("/savenote")
 	public String saveNote(Note note){
 		noteRepository.save(note);
-		return "redirect:sheetmusiclist";
+		return "upload";
 	}
 	
 	// Delete sheet music
@@ -69,7 +69,7 @@ public class NoteController {
 	
 	// Edit sheet music
 	@GetMapping("/editnote/{id}")
-	public String editNote(Note song, @PathVariable("id") Long noteId, Model model){ 
+	public String editNote(Note note, @PathVariable("id") Long noteId, Model model){ 
 		model.addAttribute("note", noteRepository.findById(noteId));
         model.addAttribute("songs", songRepository.findAll());
 		model.addAttribute("types", typeRepository.findAll());

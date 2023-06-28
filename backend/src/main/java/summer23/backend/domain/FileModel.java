@@ -5,7 +5,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Lob;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 
 @Entity
 public class FileModel {
@@ -13,9 +13,9 @@ public class FileModel {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
-	private String fileName, mimeType, base64str;
+	private String fileName, mimeType;
 
-	@ManyToOne
+	@OneToOne
 	private Note note;
 
 	@Lob

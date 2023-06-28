@@ -1,7 +1,6 @@
 package summer23.backend.web;
 
 import java.io.IOException;
-import java.util.Base64;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,52 +17,53 @@ import org.springframework.web.multipart.MultipartFile;
 
 import summer23.backend.domain.FileModel;
 import summer23.backend.domain.FileModelRepository;
+import summer23.backend.domain.Note;
+import summer23.backend.domain.NoteRepository;
 
 
 @Controller
 public class FileController {
 
 	@Autowired
-	private FileModelRepository repository; 	
+	private FileModelRepository fileRepository; 	
+
+    @Autowired
+	private NoteRepository noteRepository; 
 
     @Value("${upload.path}")
     private String uploadFolder;
     
-    @GetMapping("/addnote")
-    public String index() {
-        return "addnote";
+    @GetMapping("/upload")
+    public String note() {
+        return "upload";
     }
 
-    @PostMapping("/addnote")
-    public String fileUpload(@RequestParam("file") MultipartFile file, Model model) {
-    	// Image Base64.getEncoder().encodeToString(file.file)
-    	// <img  th:src="@{'data:image/jpeg;base64,'+${file.file}}" />
+    @PostMapping("/savefile")
+    public String fileUpload(@RequestParam("file") MultipartFile file, Model model, Note note) {
         if (file.isEmpty()) {
         	model.addAttribute("msg", "Upload failed");
             return "uploadstatus";
         }
-
         try {
-            FileModel fileModel = new FileModel(file.getOriginalFilename(), file.getContentType(), null, file.getBytes());
-            repository.save(fileModel);
+            FileModel fileModel = new FileModel(file.getOriginalFilename(), file.getContentType(), note, file.getBytes());
+            fileRepository.save(fileModel);
     
-            return "redirect:/files";
+            return "redirect:/sheetmusiclist";
         } catch (IOException e) {
             e.printStackTrace();
         }
-
         return "uploadstatus";
     }
     
     @GetMapping("/files")
     public String fileList(Model model) {
-    	model.addAttribute("files", repository.findAll());  	
+    	model.addAttribute("files", fileRepository.findAll());  	
     	return "filelist";
     }
     
 	@GetMapping("/file/{id}")
 	public ResponseEntity<byte[]> getFile(@PathVariable Long id) {
-		Optional<FileModel> fileOptional = repository.findById(id);
+		Optional<FileModel> fileOptional = fileRepository.findById(id);
 		
 		if(fileOptional.isPresent()) {
 			FileModel file = fileOptional.get();

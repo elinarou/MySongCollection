@@ -2,15 +2,12 @@ package summer23.backend.domain;
 
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 
 @Entity
 public class Note {
@@ -30,19 +27,19 @@ public class Note {
     @ManyToOne
     private Type type;
 
-    @JsonIgnore
-	@OneToMany(cascade = CascadeType.ALL, mappedBy ="fileModel")
-	private List<FileModel> fileModels;
+	@OneToOne
+	private FileModel fileModel;
 
     public Note() {
         super();
     }
 
-    public Note(String version, Song song, Instrument instrument, Type type) {
+    public Note(String version, Song song, Instrument instrument, Type type, FileModel fileModel) {
         this.version = version;
         this.song = song;
         this.instrument = instrument;
         this.type = type;
+        this.fileModel = fileModel;
     }
 
     public Long getId() {
@@ -85,12 +82,12 @@ public class Note {
         this.type = type;
     }
 
-    public List<FileModel> getFileModels() {
-		return fileModels;
+    public FileModel getFileModel() {
+		return fileModel;
 	}
 
-	public void setFileModels(List<FileModel> fileModels) {
-		this.fileModels = fileModels;
+	public void setFileModel(FileModel fileModel) {
+		this.fileModel = fileModel;
 	}
 
     @Override
