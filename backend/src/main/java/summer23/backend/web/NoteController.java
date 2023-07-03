@@ -3,11 +3,14 @@ package summer23.backend.web;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import jakarta.validation.Valid;
 import summer23.backend.domain.InstrumentRepository;
 import summer23.backend.domain.Note;
 import summer23.backend.domain.NoteRepository;
@@ -29,21 +32,21 @@ public class NoteController {
 	@Autowired
 	private TypeRepository typeRepository;
 	
-	// Show all sheet music
+	// Show all notes
 	@RequestMapping(value= {"/sheetmusiclist"})
 	public String listSheetMusic(Model model) {
 		model.addAttribute("notes", noteRepository.findAll());
 		return "sheetmusiclist";
 	}
 
-    // Show song id's sheet music
-    @GetMapping("/songsheetmusic/{id}")
-    public String listSongSheetMusic(@PathVariable("id") Long songId, Model model) {
-        model.addAttribute("notes", noteRepository.findBySongId(songId));
-        return "songsheetmusic";
-    }
+    // // Show song id's sheet music
+    // @GetMapping("/songsheetmusic/{id}")
+    // public String listSongSheetMusic(@PathVariable("id") Long songId, Model model) {
+    //     model.addAttribute("notes", noteRepository.findBySongId(songId));
+    //     return "songsheetmusic";
+    // }
 	
-	// Add new sheet music
+	// Add new note
 	@RequestMapping(value = "/addnote")
 	public String addNote(Model model){
 		model.addAttribute("note", new Note());
@@ -53,21 +56,27 @@ public class NoteController {
 		return "addnote";
 	}
 	
-	// Save new sheet music
+	// Save new note
 	@PostMapping("/savenote")
-	public String saveNote(Note note){
+	public String saveNote(@Valid @ModelAttribute("note") Note note, BindingResult bindingResult, Model model){
+		if (bindingResult.hasErrors()) {
+        model.addAttribute("songs", songRepository.findAll());
+		model.addAttribute("types", typeRepository.findAll());
+		model.addAttribute("instruments", instrumentRepository.findAll());
+		return "editnote";
+		}
 		noteRepository.save(note);
 		return "redirect:sheetmusiclist";
 	}
 	
-	// Delete sheet music
+	// Delete note
 	@GetMapping("/deletenote/{id}")
 	public String deleteNote(@PathVariable("id") Long noteId, Model model){ 
 		noteRepository.deleteById(noteId);
 		return "redirect:../sheetmusiclist";
 	}
 	
-	// Edit sheet music
+	// Edit note
 	@GetMapping("/editnote/{id}")
 	public String editNote(Note note, @PathVariable("id") Long noteId, Model model){ 
 		model.addAttribute("note", noteRepository.findById(noteId));
