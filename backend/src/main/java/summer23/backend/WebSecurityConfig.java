@@ -30,8 +30,12 @@ public class WebSecurityConfig {
             auth.requestMatchers("/h2-console/**").permitAll();
             auth.requestMatchers("/h2-console").permitAll();
             // Only admin addsong and editsong
+            auth.requestMatchers("/addartist/**").hasAuthority("ADMIN");
+            auth.requestMatchers("/editartist/**").hasAuthority("ADMIN");
             auth.requestMatchers("/addsong/**").hasAuthority("ADMIN");
             auth.requestMatchers("/editsong/**").hasAuthority("ADMIN");
+            auth.requestMatchers("/addnote/**").hasAuthority("ADMIN");
+            auth.requestMatchers("/editnote/**").hasAuthority("ADMIN");
             // all http request will be authenticated
             auth.anyRequest().authenticated();
         })
