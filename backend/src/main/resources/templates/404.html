@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>MySongCollection</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+</head>
+
+<body>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark p-sm-3">
+		<a class="navbar-brand" href="/">My Song Collection</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarText">
+		  	<ul class="navbar-nav mr-auto">
+				<li class="nav-item">
+					<a class="nav-link" href="/artistlist">Artists <span class="sr-only">(current)</span></a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/songlist">Songs</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/sheetmusiclist">Sheet Music</a>
+				</li>
+		    </ul>
+		    <form class="form-inline">
+				<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+				<button class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
+		    </form>
+		</div>
+	</nav>
+	<div class="clearfix">
+		<form class="float-right m-sm-3" th:action="@{/logout}" method="post">
+			<input type="submit" value="Sign Out" class="btn btn-sm btn-light"/>
+		</form>
+	</div>
+	<div class="text-center">
+        <h1>There is no page here!</h1>
+        <p>Sorry! The page you are looking for does not exist.</p>
+        <p>Return to <a href="/">home page</a>.</p>
+	</div>
+</body>
+
+</html>
