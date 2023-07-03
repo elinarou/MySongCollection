@@ -39,12 +39,12 @@ public class NoteController {
 		return "sheetmusiclist";
 	}
 
-    // // Show song id's sheet music
-    // @GetMapping("/songsheetmusic/{id}")
-    // public String listSongSheetMusic(@PathVariable("id") Long songId, Model model) {
-    //     model.addAttribute("notes", noteRepository.findBySongId(songId));
-    //     return "songsheetmusic";
-    // }
+    // Show song id's sheet music
+    @GetMapping("/songsheetmusic/{id}")
+    public String listSongSheetMusic(@PathVariable("id") Long songId, Model model) {
+        model.addAttribute("notes", noteRepository.findBySongId(songId));
+    	return "songsheetmusic";
+    }
 	
 	// Add new note
 	@RequestMapping(value = "/addnote")
