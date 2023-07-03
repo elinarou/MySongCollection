@@ -20,7 +20,7 @@ public class Instrument {
     private String name;
 
     @JsonIgnore
-	@OneToMany(cascade = CascadeType.ALL, mappedBy ="instrument")
+	@OneToMany(cascade = CascadeType.ALL)
 	private List<Note> notes;
 
     public Instrument() {

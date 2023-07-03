@@ -28,7 +28,7 @@ public class Song {
     private Genre genre;
 
     @JsonIgnore
-	@OneToMany(cascade = CascadeType.ALL, mappedBy ="song")
+	@OneToMany(cascade = CascadeType.ALL)
 	private List<Note> notes;
 
     public Song() {

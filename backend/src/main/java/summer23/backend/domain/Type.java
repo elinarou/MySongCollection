@@ -20,7 +20,7 @@ public class Type {
     private String name;
 
     @JsonIgnore
-	@OneToMany(cascade = CascadeType.ALL, mappedBy ="type")
+	@OneToMany(cascade = CascadeType.ALL)
 	private List<Note> notes;
 
     public Type() {
