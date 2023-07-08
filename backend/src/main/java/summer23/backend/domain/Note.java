@@ -21,6 +21,9 @@ public class Note {
     private Song song;
 
     @ManyToOne
+    private Favorite favorite;
+
+    @ManyToOne
     private Instrument instrument;
     
     @ManyToOne
@@ -75,6 +78,14 @@ public class Note {
 
     public void setType(Type type) {
         this.type = type;
+    }
+
+    public Favorite getFavorite() {
+        return favorite;
+    }
+
+    public void setFavorite(Favorite favorite) {
+        this.favorite = favorite;
     }
 
     @Override
