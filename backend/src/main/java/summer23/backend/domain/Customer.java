@@ -5,6 +5,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
+import jakarta.validation.constraints.Size;
 
 @Entity
 public class Customer {
@@ -13,8 +14,13 @@ public class Customer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Size(min = 1, max = 50, message = "This field is required and cannot be empty.")
     private String firstname;
+
+    @Size(min = 1, max = 50, message = "This field is required and cannot be empty.")
     private String lastname;
+
+    @Size(min = 1, max = 50, message = "This field is required and cannot be empty.")
     private String email;
 
     @ManyToOne
