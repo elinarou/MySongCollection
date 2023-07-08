@@ -67,7 +67,7 @@ public class SongController {
 		return "redirect:songlist";
 	}
 	
-	// Delete Song, if there's sheet music
+	// Delete Song, if there's no sheet music
 	@GetMapping("/deletesong/{id}")
     public RedirectView deleteSong(@PathVariable("id") Long songId, RedirectAttributes attributes) {
         Optional<Song> song = songRepository.findById(songId);
