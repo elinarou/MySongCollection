@@ -27,9 +27,6 @@
 				<li class="nav-item active">
 					<a class="nav-link" href="/customerlist">Customers</a>
 				</li>
-                <li class="nav-item">
-					<a class="nav-link" href="/favoritelist">Favorites</a>
-				</li>
 		    </ul>
 		    <form class="form-inline">
 				<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
@@ -38,7 +35,7 @@
 		</div>
 	</nav>
 	<div class="clearfix">
-		<a class="float-left ml-sm-2 mt-sm-3 btn btn-info" href="/addfavorite">New Favorite</a>
+		<a class="float-left ml-sm-2 mt-sm-3 btn btn-info" href="/addfavorite/{id}(id=${customer.id})">New Favorite</a>
 		<form class="float-right m-sm-3" th:action="@{/logout}" method="post">
 			<input type="submit" value="Sign Out" class="btn btn-sm btn-light"/>
 		</form>

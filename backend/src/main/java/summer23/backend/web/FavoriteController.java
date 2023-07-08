@@ -28,11 +28,11 @@ public class FavoriteController {
 	private NoteRepository noteRepository;
 	
 	// Show all favorites
-	@RequestMapping(value= {"/favoritelist"})
-	public String listFavorites(Model model) {
-		model.addAttribute("favorites", favoriteRepository.findAll());
-		return "favoritelist";
-	}
+	// @RequestMapping(value= {"/favoritelist"})
+	// public String listFavorites(Model model) {
+	// 	model.addAttribute("favorites", favoriteRepository.findAll());
+	// 	return "favoritelist";
+	// }
 
     // Show customer id's favorites
     @GetMapping("/customerfavoritelist/{id}")
