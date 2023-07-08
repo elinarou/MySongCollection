@@ -21,6 +21,10 @@ import summer23.backend.domain.Song;
 import summer23.backend.domain.SongRepository;
 import summer23.backend.domain.Type;
 import summer23.backend.domain.TypeRepository;
+import summer23.backend.domain.Customer;
+import summer23.backend.domain.CustomerRepository;
+import summer23.backend.domain.Favorite;
+import summer23.backend.domain.FavoriteRepository;
 
 @SpringBootApplication
 public class BackendApplication {
@@ -39,10 +43,11 @@ public class BackendApplication {
 		ArtistRepository artistRepository, 
 		InstrumentRepository instrumentRepository,
 		TypeRepository typeRepository,
-		AppUserRepository appUserRepository) {
+		AppUserRepository appUserRepository,
+		CustomerRepository customerRepository,
+		FavoriteRepository favoriteRepository) {
 		return (args) -> {
 			
-			// Login profiles: user and admin
 			log.info("Users");
 			appUserRepository.save(new AppUser("Maija", "Meikäläinen", "USER", "user",
 					"$2a$10$57kg9OGuj44FPQyaps/fvOHmP845GQHIFdjphY4ILU/LoF1sVnQPS"));
@@ -91,14 +96,20 @@ public class BackendApplication {
 			songRepository.save(song4);
 			songRepository.save(song5);
 
+			log.info("Favorites");
+			Favorite favorite1 = new Favorite();
+			Favorite favorite2 = new Favorite();
+			favoriteRepository.save(favorite1);
+			favoriteRepository.save(favorite2);
+
 			log.info("Sheet Music");
-			Note note1 = new Note("https://www.google.com/", song1, instru1, type2);
-			Note note2 = new Note("https://www.google.com/", song2, instru3, type1);
-			Note note3 = new Note("https://www.google.com/", song3, instru1, type1);
-			Note note4 = new Note("https://www.google.com/", song1, instru3, type1);
-			Note note5 = new Note("https://www.google.com/", song4, instru1, type1);
-			Note note6 = new Note("https://www.google.com/", song4, instru1, type1);
-			Note note7 = new Note("https://www.google.com/", song5, instru3, type1);
+			Note note1 = new Note("https://www.google.com/", song1, instru1, type2, favorite1);
+			Note note2 = new Note("https://www.google.com/", song2, instru3, type1, favorite2);
+			Note note3 = new Note("https://www.google.com/", song3, instru1, type1, null);
+			Note note4 = new Note("https://www.google.com/", song1, instru3, type1, null);
+			Note note5 = new Note("https://www.google.com/", song4, instru1, type1, null);
+			Note note6 = new Note("https://www.google.com/", song4, instru1, type1, null);
+			Note note7 = new Note("https://www.google.com/", song5, instru3, type1, null);
 			noteRepository.save(note1);
 			noteRepository.save(note2);
 			noteRepository.save(note3);
@@ -107,10 +118,12 @@ public class BackendApplication {
 			noteRepository.save(note6);
 			noteRepository.save(note7);
 			
-			log.info("Fetch all sheet music");
-			for (Note note : noteRepository.findAll()) {
-				log.info(note.toString());
-			}
+			log.info("Customers");
+			Customer customer1 = new Customer("Jane", "Smith", "jane@email.com", favorite1);
+			Customer customer2 = new Customer("John", "Smith", "john@email.com", favorite2);
+			customerRepository.save(customer1);
+			customerRepository.save(customer2);
+			
   		};
   	}
 

@@ -21,23 +21,24 @@ public class Note {
     private Song song;
 
     @ManyToOne
-    private Favorite favorite;
-
-    @ManyToOne
     private Instrument instrument;
     
     @ManyToOne
     private Type type;
 
+    @ManyToOne
+    private Favorite favorite;
+
     public Note() {
         super();
     }
 
-    public Note(String url, Song song, Instrument instrument, Type type) {
+    public Note(String url, Song song, Instrument instrument, Type type, Favorite favorite) {
         this.url = url;
         this.song = song;
         this.instrument = instrument;
         this.type = type;
+        this.favorite = favorite;
     }
 
     public Long getId() {

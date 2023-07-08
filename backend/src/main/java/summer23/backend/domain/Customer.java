@@ -30,10 +30,11 @@ public class Customer {
         super();
     }
 
-    public Customer(String firstname, String lastname, String email) {
+    public Customer(String firstname, String lastname, String email, Favorite favorite) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.email = email;
+        this.favorite = favorite;
     }
 
     public Long getId() {
