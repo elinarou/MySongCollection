@@ -1,15 +1,10 @@
 package summer23.backend.domain;
 
-import java.util.List;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Favorite {
@@ -18,16 +13,19 @@ public class Favorite {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @JsonIgnore
-	@OneToMany(cascade = CascadeType.ALL)
-	private List<Customer> customers;
+    @ManyToOne
+    private Customer customer;
 
-    @JsonIgnore
-	@OneToMany(cascade = CascadeType.ALL)
-	private List<Note> notes;
+    @ManyToOne
+    private Note note;
 
     public Favorite() {
         super();
+    }
+
+    public Favorite(Customer customer, Note note) {
+        this.customer = customer;
+        this.note = note;
     }
 
     public Long getId() {
@@ -38,20 +36,20 @@ public class Favorite {
         this.id = id;
     }
 
-    public List<Customer> getCustomers() {
-		return customers;
-	}
+    public Customer getCustomer() {
+        return customer;
+    }
 
-	public void setCustomers(List<Customer> customers) {
-		this.customers = customers;
-	}
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
 
-    public List<Note> getNotes() {
-		return notes;
-	}
+    public Note getNote() {
+        return note;
+    }
 
-	public void setNotes(List<Note> notes) {
-		this.notes = notes;
-	}
+    public void setNote(Note note) {
+        this.note = note;
+    }
     
 }

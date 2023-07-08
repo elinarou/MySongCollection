@@ -96,20 +96,14 @@ public class BackendApplication {
 			songRepository.save(song4);
 			songRepository.save(song5);
 
-			log.info("Favorites");
-			Favorite favorite1 = new Favorite();
-			Favorite favorite2 = new Favorite();
-			favoriteRepository.save(favorite1);
-			favoriteRepository.save(favorite2);
-
 			log.info("Sheet Music");
-			Note note1 = new Note("https://www.google.com/", song1, instru1, type2, favorite1);
-			Note note2 = new Note("https://www.google.com/", song2, instru3, type1, favorite2);
-			Note note3 = new Note("https://www.google.com/", song3, instru1, type1, null);
-			Note note4 = new Note("https://www.google.com/", song1, instru3, type1, null);
-			Note note5 = new Note("https://www.google.com/", song4, instru1, type1, null);
-			Note note6 = new Note("https://www.google.com/", song4, instru1, type1, null);
-			Note note7 = new Note("https://www.google.com/", song5, instru3, type1, null);
+			Note note1 = new Note("https://www.google.com/", song1, instru1, type2);
+			Note note2 = new Note("https://www.google.com/", song2, instru3, type1);
+			Note note3 = new Note("https://www.google.com/", song3, instru1, type1);
+			Note note4 = new Note("https://www.google.com/", song1, instru3, type1);
+			Note note5 = new Note("https://www.google.com/", song4, instru1, type1);
+			Note note6 = new Note("https://www.google.com/", song4, instru1, type1);
+			Note note7 = new Note("https://www.google.com/", song5, instru3, type1);
 			noteRepository.save(note1);
 			noteRepository.save(note2);
 			noteRepository.save(note3);
@@ -119,10 +113,18 @@ public class BackendApplication {
 			noteRepository.save(note7);
 			
 			log.info("Customers");
-			Customer customer1 = new Customer("Jane", "Smith", "jane@email.com", favorite1);
-			Customer customer2 = new Customer("John", "Smith", "john@email.com", favorite2);
+			Customer customer1 = new Customer("Jane", "Smith", "jane@email.com");
+			Customer customer2 = new Customer("John", "Smith", "john@email.com");
 			customerRepository.save(customer1);
 			customerRepository.save(customer2);
+
+			log.info("Favorites");
+			Favorite favorite1 = new Favorite(customer1, note1);
+			Favorite favorite2 = new Favorite(customer2, note2);
+			Favorite favorite3 = new Favorite(customer2, note3);
+			favoriteRepository.save(favorite1);
+			favoriteRepository.save(favorite2);
+			favoriteRepository.save(favorite3);
 			
   		};
   	}

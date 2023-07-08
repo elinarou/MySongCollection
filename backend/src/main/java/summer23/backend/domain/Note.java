@@ -1,10 +1,16 @@
 package summer23.backend.domain;
 
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.Size;
 
 @Entity
@@ -26,19 +32,19 @@ public class Note {
     @ManyToOne
     private Type type;
 
-    @ManyToOne
-    private Favorite favorite;
+    @JsonIgnore
+	@OneToMany(cascade = CascadeType.ALL)
+	private List<Favorite> favorites;
 
     public Note() {
         super();
     }
 
-    public Note(String url, Song song, Instrument instrument, Type type, Favorite favorite) {
+    public Note(String url, Song song, Instrument instrument, Type type) {
         this.url = url;
         this.song = song;
         this.instrument = instrument;
         this.type = type;
-        this.favorite = favorite;
     }
 
     public Long getId() {
@@ -81,13 +87,13 @@ public class Note {
         this.type = type;
     }
 
-    public Favorite getFavorite() {
-        return favorite;
-    }
+    public List<Favorite> getFavorites() {
+		return favorites;
+	}
 
-    public void setFavorite(Favorite favorite) {
-        this.favorite = favorite;
-    }
+	public void setFavorites(List<Favorite> favorites) {
+		this.favorites = favorites;
+	}
 
     @Override
     public String toString() {

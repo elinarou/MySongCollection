@@ -1,10 +1,15 @@
 package summer23.backend.domain;
 
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.Size;
 
 @Entity
@@ -23,18 +28,18 @@ public class Customer {
     @Size(min = 1, max = 50, message = "This field is required and cannot be empty.")
     private String email;
 
-    @ManyToOne
-    private Favorite favorite;
+    @JsonIgnore
+	@OneToMany(cascade = CascadeType.ALL)
+	private List<Favorite> favorites;
 
     public Customer() {
         super();
     }
 
-    public Customer(String firstname, String lastname, String email, Favorite favorite) {
+    public Customer(String firstname, String lastname, String email) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.email = email;
-        this.favorite = favorite;
     }
 
     public Long getId() {
@@ -69,13 +74,13 @@ public class Customer {
         this.email = email;
     }
 
-    public Favorite getFavorite() {
-        return favorite;
-    }
+    public List<Favorite> getFavorites() {
+		return favorites;
+	}
 
-    public void setFavorite(Favorite favorite) {
-        this.favorite = favorite;
-    }
+	public void setFavorites(List<Favorite> favorites) {
+		this.favorites = favorites;
+	}
 
     @Override
     public String toString() {
