@@ -1,5 +1,7 @@
 package summer23.backend.domain;
 
-public class FavoriteRepository {
-    
+import org.springframework.data.repository.CrudRepository;
+
+public interface FavoriteRepository extends CrudRepository<Favorite, Long> {
+
 }
