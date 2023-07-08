@@ -47,7 +47,7 @@
 		<table class="table table-striped">
 			<thead>
 				<tr>
-                    <th>Customer</th>
+                    <th colspan="2">Customer</th>
                     <th>Artist</th>
 					<th>Song</th>
 					<th>Instrument</th>
@@ -59,7 +59,8 @@
 			</thead>
 			<tbody>
 				<tr th:each="favorite:${favorites}">
-                    <td th:text="${favorite.customer.firstname} {favorite.customer.lastname}"></td>
+                    <td th:text="${favorite.customer.firstname}"></td>
+                    <td th:text="${favorite.customer.lastname}"></td>
 					<td th:text="${favorite.note.song.artist.name}"></td>
                     <td th:text="${favorite.note.song.name}"></td>
 					<td th:text="${favorite.note.instrument.name}"></td>
