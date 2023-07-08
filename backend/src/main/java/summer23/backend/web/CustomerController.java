@@ -1,7 +1,5 @@
 package summer23.backend.web;
 
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,8 +9,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import org.springframework.web.servlet.view.RedirectView;
 
 import jakarta.validation.Valid;
 import summer23.backend.domain.CustomerRepository;
@@ -48,20 +44,13 @@ public class CustomerController {
 		customerRepository.save(customer);
 		return "redirect:customerlist";
 	}
-	
-	// Delete customer, if there's no favorites
+
+	// Delete customer
 	@GetMapping("/deletecustomer/{id}")
-    public RedirectView deleteCustomer(@PathVariable("id") Long customerId, RedirectAttributes attributes) {
-        Optional<Customer> customer = customerRepository.findById(customerId);
-        // From optional to normal
-        Customer normalCustomer = customer.get();
-        if (normalCustomer.getFavorites().isEmpty()) {
-            customerRepository.deleteById(customerId);
-        } else {
-            attributes.addFlashAttribute("error", "Customer can't be deleted since it has favorites!");
-        }
-        return new RedirectView("/customerlist");
-    }
+	public String deleteCustomer(@PathVariable("id") Long customerId, Model model){ 
+		customerRepository.deleteById(customerId);
+		return "redirect:../customerlist";
+	}
 	
 	// Edit customer
 	@GetMapping("/editcustomer/{id}")
