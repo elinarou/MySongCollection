@@ -35,10 +35,13 @@
 		</div>
 	</nav>
 	<div class="clearfix">
-		<a class="float-left ml-sm-2 mt-sm-3 btn btn-info" href="/addcustomer">New Customer</a>
+		<h1 class="float-left m-sm-3 h4">Customers</h1>
 		<form class="float-right m-sm-3" th:action="@{/logout}" method="post">
 			<input type="submit" value="Sign Out" class="btn btn-sm btn-light"/>
 		</form>
+	</div>
+	<div>
+		<a class="m-sm-2 btn btn-info" href="/addcustomer">New Customer</a>
 	</div>
 	<div>
 		<table class="table table-striped">

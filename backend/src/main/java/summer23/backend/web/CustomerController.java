@@ -56,7 +56,7 @@ public class CustomerController {
 	@GetMapping("/editcustomer/{id}")
 	public String editCustomer(Customer customer, @PathVariable("id") Long customerId, Model model){ 
 		model.addAttribute("customer", customerRepository.findById(customerId));
-		return "editsong";
+		return "editcustomer";
 	}
  
 }
