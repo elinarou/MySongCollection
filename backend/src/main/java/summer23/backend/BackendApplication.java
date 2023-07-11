@@ -113,8 +113,8 @@ public class BackendApplication {
 			noteRepository.save(note7);
 			
 			log.info("Customers");
-			Customer customer1 = new Customer("Jane", "Smith", "jane@email.com");
-			Customer customer2 = new Customer("John", "Smith", "john@email.com");
+			Customer customer1 = new Customer("Jane", "jane@email.com");
+			Customer customer2 = new Customer("John", "john@email.com");
 			customerRepository.save(customer1);
 			customerRepository.save(customer2);
 

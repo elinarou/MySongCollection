@@ -46,15 +46,9 @@
             <input type="hidden" id="id" th:field="*{id}" />
 
 			<div class="form-group">
-				<label for="firstname">Firstname</label>
-				<input type="text" th:field="*{firstname}" />
-				<div th:if="${#fields.hasErrors('firstname')}" th:errors="*{firstname}">Error</div>
-			</div>
-
-            <div class="form-group">
-				<label for="lastname">Lastname</label>
-				<input type="text" th:field="*{lastname}" />
-				<div th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}">Error</div>
+				<label for="username">Username</label>
+				<input type="text" th:field="*{username}" />
+				<div th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Error</div>
 			</div>
 
             <div class="form-group">

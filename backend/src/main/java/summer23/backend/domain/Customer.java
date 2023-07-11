@@ -20,10 +20,7 @@ public class Customer {
     private Long id;
 
     @Size(min = 1, max = 50, message = "This field is required and cannot be empty.")
-    private String firstname;
-
-    @Size(min = 1, max = 50, message = "This field is required and cannot be empty.")
-    private String lastname;
+    private String username;
 
     @Size(min = 1, max = 50, message = "This field is required and cannot be empty.")
     private String email;
@@ -36,9 +33,8 @@ public class Customer {
         super();
     }
 
-    public Customer(String firstname, String lastname, String email) {
-        this.firstname = firstname;
-        this.lastname = lastname;
+    public Customer(String username, String email) {
+        this.username = username;
         this.email = email;
     }
 
@@ -50,20 +46,12 @@ public class Customer {
         this.id = id;
     }
 
-    public String getFirstname() {
-        return firstname;
+    public String getUsername() {
+        return username;
     }
 
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
-    }
-
-    public String getLastname() {
-        return lastname;
-    }
-
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getEmail() {
@@ -84,7 +72,7 @@ public class Customer {
 
     @Override
     public String toString() {
-        return "User [id=" + id + ", firstname=" + firstname + ", lastname=" + lastname + ", email=" + email + "]";
+        return "User [id=" + id + ", username=" + username + ", email=" + email + "]";
     }
     
 }
