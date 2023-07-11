@@ -38,6 +38,12 @@ public class FavoriteRestController {
         return favoriteRepository.findByNoteId(id);
     }
 
+    // Return favorite by customer id 
+    @GetMapping("/api/favorites/customer/id/{id}")
+    Iterable<Favorite> getFavoriteByCustomerId(@PathVariable Long id) {
+        return favoriteRepository.findByCustomerId(id);
+    }
+
     // Return favorite by customer username 
     @GetMapping("/api/favorites/customer/username/{username}")
     Iterable<Favorite> getFavoriteByUserame(@PathVariable String username) {
