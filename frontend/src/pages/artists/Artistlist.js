@@ -1,4 +1,4 @@
-export default function Favoriteslist() {
+export default function Artistlist() {
 
 
     return (
